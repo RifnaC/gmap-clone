@@ -27,15 +27,17 @@ const SearchHistory = ({ isVisible }) => {
         <List spacing={2}>
           {history.history.length ? (
             history.history.map((item) => (
+              <>
               <Flex justifyContent="space-between" alignItems="center" p={2}>
                 <ChakraText>{item.term}</ChakraText>
-
                 <IconButton
                   size="xs" colorScheme="red" onClick={() => dispatch(removeHistory(item._id))}
                   aria-label="delete"
                   icon={<CloseIcon />}
                 />
               </Flex>
+              <hr />
+              </>
             ))
           ) : (
             <ListItem p={2}>No search history</ListItem>
