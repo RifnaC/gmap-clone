@@ -25,7 +25,7 @@ export const register = async (req, res) => {
     const newUser = await User.create({ email, password: hashedPassword });
 
     const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    const url = `http://localhost:5174/verify/${token}`;
+    const url = `https://gmap-clone-3u3k.vercel.app/verify/${token}`;
     const mailOptions = {
       from: process.env.MAIL_USER,
       to: newUser.email,
@@ -77,7 +77,7 @@ export const login = async (req, res) => {
   try {
     const user = await User.findOne({ email:email });
     if (!user) return res.status(400).json({ msg: 'Invalid credentials' });
-    
+
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ msg: 'Invalid credentials' });
     if (!user.isVerified) return res.status(400).json({ msg: 'Please verify your email to login' });

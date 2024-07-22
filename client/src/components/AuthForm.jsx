@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { register, login } from '../features/auth/authSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   Box,
   Button,
@@ -140,9 +140,18 @@ const AuthForm = ({ type }) => {
                bgGradient: 'linear(to-tr, purple.300, orange.100,)',
            }}>
             {type === 'register' ? 'Register' : 'Login'}
+
           </Button>
         </VStack>
       </form>
+      <hr />
+      {type === 'register' ?(
+        <Link to="/login" >
+        <p>Already have account?</p> Login
+      </Link>
+      ):(<Link to="/register" >
+        <p>Don't have account?</p> Register
+      </Link>)}
     </Box>
     </Center>
   );
