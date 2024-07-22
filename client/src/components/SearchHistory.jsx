@@ -45,7 +45,6 @@ const SearchHistory = ({ isVisible }) => {
     )
   );
 
-  // return (
   //   <div>
   //     <ul>
   //       {history.history ? (

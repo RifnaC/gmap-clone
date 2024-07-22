@@ -13,6 +13,10 @@ export const searchLocation = async (req, res) => {
         q: searchTerm,
         format: 'json',
       },
+      headers: {
+        'User-Agent': 'gmap-clone/1.0 (rifnazar2@gmail.com)',
+        'Referer': 'https://gmap-clone-3u3k.vercel.app/',
+      },
     });
     if (response.data.length === 0) {
       return res.status(404).json({ msg: 'No locations found' });
