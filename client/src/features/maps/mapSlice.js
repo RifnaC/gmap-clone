@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const searchLocation = createAsyncThunk('maps/searchLocation', async (searchTerm, { getState }) => {
   const { auth } = getState();
-  const response = await axios.post('http://localhost:4000/api/maps/search', { searchTerm }, {
+  const response = await axios.post('https://gmap-clone.vercel.app/api/maps/search', { searchTerm }, {
     headers: { Authorization: auth.token },
   });
   return response.data;
@@ -11,7 +11,7 @@ export const searchLocation = createAsyncThunk('maps/searchLocation', async (sea
 
 export const getHistory = createAsyncThunk('maps/getHistory', async (_, { getState }) => {
   const { auth } = getState();
-  const response = await axios.get('http://localhost:4000/api/maps/history', {
+  const response = await axios.get('https://gmap-clone.vercel.app/api/maps/history', {
     headers: { Authorization: auth.token },
   });
   return response.data;
@@ -19,7 +19,7 @@ export const getHistory = createAsyncThunk('maps/getHistory', async (_, { getSta
 
 export const removeHistory = createAsyncThunk('maps/removeHistory', async (id, { getState }) => {
   const { auth } = getState();
-  await axios.delete(`http://localhost:4000/api/maps/history/${id}`, {
+  await axios.delete(`https://gmap-clone.vercel.app/api/maps/history/${id}`, {
     headers: { Authorization: auth.token },
   });
   return id;

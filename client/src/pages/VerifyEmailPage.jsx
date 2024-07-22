@@ -10,7 +10,7 @@ const VerifyEmailPage = () => {
     const verifyEmail = async () => {
       if (token) {
         try {
-          const response = await axios.get(`http://localhost:4000/api/auth/verify/${token}`);
+          const response = await axios.get(`https://gmap-clone.vercel.app/api/auth/verify/${token}`);
           setMessage(response.data.msg);
           setTimeout(() => {
             navigate('/login');
