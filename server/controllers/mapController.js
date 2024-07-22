@@ -8,8 +8,7 @@ dotenv.config();
 export const searchLocation = async (req, res) => {
   const { searchTerm }  = req.body;
   try {
-    console.log(process.env.MAPS_API)
-    const response = await axios.get(process.env.MAPS_API || "https://nominatim.openstreetmap.org/search", {
+    const response = await axios.get("https://nominatim.openstreetmap.org/search", {
       params: {
         q: searchTerm,
         format: 'json',
