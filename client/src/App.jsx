@@ -9,23 +9,23 @@ import { ChakraProvider } from '@chakra-ui/react'
 
 const App = () => {
   const { user } = useSelector((state) => state.auth);
-  
+
   return (
     <ChakraProvider>
-        <Router>
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/verify/:token" element={<VerifyEmailPage />} />
-        <Route
-          path="/map"
-          element={user ? <MapPage /> : <Navigate to="/login" />}
-        />
-        <Route path="*" element={<Navigate to="/login" />} />
-      </Routes>
-    </Router>
+      <Router>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/verify/:token" element={<VerifyEmailPage />} />
+          <Route
+            path="/map"
+            element={user ? <MapPage /> : <Navigate to="/login" />}
+          />
+          <Route path="*" element={<Navigate to="/login" />} />
+        </Routes>
+      </Router>
     </ChakraProvider>
-    
+
   );
 };
 
