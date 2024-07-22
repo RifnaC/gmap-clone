@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const register = createAsyncThunk('auth/register', async (userData, { rejectWithValue }) => {
   try {
-    const response = await axios.post('http://localhost:4000/api/auth/register', userData);
+    const response = await axios.post('https://gmap-clone.vercel.app/api/auth/register', userData);
     return response.data;
   } catch (error) {
     if (error.response && error.response.data) {
@@ -18,7 +18,7 @@ export const register = createAsyncThunk('auth/register', async (userData, { rej
 
 export const login = createAsyncThunk('auth/login', async (userData, { rejectWithValue }) => {
   try {
-    const response = await axios.post('http://localhost:4000/api/auth/login', userData);
+    const response = await axios.post('https://gmap-clone.vercel.app/api/auth/login', userData);
     return response.data;
   } catch (error) {
     if (error.response && error.response.data) {
@@ -32,7 +32,7 @@ export const login = createAsyncThunk('auth/login', async (userData, { rejectWit
 const initialState = {
   user: null,
   token: null,
-  status: 'idle', // status field to handle the login status
+  status: 'idle', 
   error: null,
 };
 
