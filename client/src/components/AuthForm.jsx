@@ -15,6 +15,9 @@ import {
   Heading,
   Center,
   useToast,
+  Flex,
+  Text as ChakraText,
+  Link as ChakraLink,
 } from '@chakra-ui/react';
 
 const AuthForm = ({ type }) => {
@@ -144,14 +147,24 @@ const AuthForm = ({ type }) => {
           </Button>
         </VStack>
       </form>
-      <hr />
-      {type === 'register' ?(
-        <Link to="/login" >
-        <p>Already have account?</p> Login
-      </Link>
-      ):(<Link to="/register" >
-        <p>Don't have account?</p> Register
-      </Link>)}
+      
+      <hr style={{ margin: '20px 0' }} />
+
+      <Flex justify="center">
+        {type === 'register' ? (
+          <ChakraLink as={Link} to="/login">
+            <ChakraText fontSize="sm">
+              Already have an account? <ChakraText as="span" color="teal.500">Login</ChakraText>
+            </ChakraText>
+          </ChakraLink>
+        ) : (
+          <ChakraLink as={Link} to="/register">
+            <ChakraText fontSize="sm">
+              Don't have an account? <ChakraText as="span" color="teal.500">Register</ChakraText>
+            </ChakraText>
+          </ChakraLink>
+        )}
+      </Flex>
     </Box>
     </Center>
   );
