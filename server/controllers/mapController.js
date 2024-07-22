@@ -9,7 +9,7 @@ export const searchLocation = async (req, res) => {
   const { searchTerm }  = req.body;
   try {
     console.log(process.env.MAPS_API)
-    const response = await axios.get(process.env.MAPS_API, {
+    const response = await axios.get(process.env.MAPS_API || "https://nominatim.openstreetmap.org/search", {
       params: {
         q: searchTerm,
         format: 'json',
@@ -22,7 +22,7 @@ export const searchLocation = async (req, res) => {
     const location = response.data[0];
 
     const searchHistory = await SearchHistory.create({
-      user: req.user, // Ensure req.user is set correctly with middleware
+      user: req.user, 
       term: searchTerm,
       location,
     });
